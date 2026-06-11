@@ -4,7 +4,7 @@
   "pub_date": "2025-06-11T00:00:00Z",
   "platforms": {
     "windows-x86_64": {
-      "url": "https://github.com/USER/REPO/releases/v1.0.1/accountpro_desktop_1.0.1_x64-setup.exe",
+      "url": "https://github.com/USER/REPO/releases/v1.0.1/accountpro_desktop_0.1.0_x64_en-US.msi",
       "signature": "CONTENT_OF_.sig_FILE"
     },
 
