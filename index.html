@@ -291,12 +291,66 @@
     }
     footer a { color: var(--green); text-decoration: none; }
 
+    /* ── SCREENSHOTS ── */
+    .screenshots-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem; margin-top: 2.5rem;
+    }
+    .screenshot-wrap {
+      border-radius: 14px; overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--card);
+      aspect-ratio: 9/16;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: .5rem; color: var(--slate); font-size: .8rem;
+      transition: border-color .2s;
+      position: relative;
+    }
+    .screenshot-wrap.desktop-ss { aspect-ratio: 16/9; }
+    .screenshot-wrap:hover { border-color: var(--green); }
+    .screenshot-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .ss-placeholder { font-size: 2.5rem; opacity: .25; }
+    .ss-label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: .5rem .75rem; background: rgba(15,23,42,.75);
+      font-size: .72rem; color: #94A3B8; text-align: center;
+    }
+    .desktop-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 1rem; margin-top: 2.5rem;
+    }
+
+    /* ── PLATFORM CARDS ── */
+    .platform-cards {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem; margin-top: 2.5rem;
+    }
+    .platform-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+      padding: 1.75rem; text-decoration: none; color: var(--white);
+      transition: border-color .2s, transform .2s;
+      display: flex; flex-direction: column; gap: .75rem;
+    }
+    .platform-card:hover { border-color: var(--green); transform: translateY(-3px); }
+    .platform-icon { font-size: 2rem; }
+    .platform-name { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.05rem; }
+    .platform-sub { font-size: .82rem; color: #94A3B8; line-height: 1.5; }
+    .platform-badge {
+      display: inline-flex; align-items: center; gap: .4rem;
+      font-size: .75rem; font-weight: 600; color: var(--green);
+      background: rgba(16,185,129,.1); border: 1px solid rgba(16,185,129,.2);
+      padding: .25rem .65rem; border-radius: 99px; width: fit-content; margin-top: auto;
+    }
+
     /* ── MOBILE ── */
     @media (max-width: 720px) {
       .hero { flex-direction: column; padding-top: 6rem; }
       .hero-visual { max-width: 100%; width: 100%; }
       .entry-inner { flex-direction: column; }
       .stats-inner { gap: 1.5rem; }
+      .screenshots-grid { grid-template-columns: repeat(2, 1fr); }
+      .desktop-grid { grid-template-columns: 1fr; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -375,7 +429,29 @@
   </div>
 </div>
 
+<!-- DOWNLOAD PLATFORMS -->
+<div class="section" style="padding-bottom: 2rem;">
+  <div class="section-label">Available on</div>
+  <h2 class="section-title">Download Account Pro</h2>
+  <p class="section-sub">Available on Android and Desktop — pick your platform and get started free.</p>
+  <div class="platform-cards">
+    <a class="platform-card" href="https://play.google.com/store/apps/details?id=com.edev.accountsir" target="_blank">
+      <div class="platform-icon">🤖</div>
+      <div class="platform-name">Android</div>
+      <div class="platform-sub">Download from Google Play Store. Works on all Android phones and tablets, fully offline.</div>
+      <div class="platform-badge">▶ Get on Google Play</div>
+    </a>
+    <a class="platform-card" href="https://github.com/edev2/accountpro/tree/main/releases" target="_blank">
+      <div class="platform-icon">🖥️</div>
+      <div class="platform-name">Desktop</div>
+      <div class="platform-sub">Available for Windows, macOS, and Linux. Download the installer from GitHub Releases.</div>
+      <div class="platform-badge">⬇ Download from GitHub</div>
+    </a>
+  </div>
+</div>
+
 <!-- FEATURES -->
+
 <div id="features" class="section">
   <div class="section-label">What's inside</div>
   <h2 class="section-title">Everything an accountant expects.<br/>Nothing you don't need.</h2>
@@ -479,7 +555,65 @@
   </div>
 </div>
 
+<!-- SCREENSHOTS: MOBILE -->
+<div class="section" style="padding-bottom: 0;">
+  <div class="section-label">See it in action</div>
+  <h2 class="section-title">Mobile Screenshots</h2>
+  <p class="section-sub">Replace placeholders with your actual app screenshots.</p>
+  <div class="screenshots-grid">
+    <div class="screenshot-wrap">
+      <!-- Replace with: <img src="assets/screenshots/mobile-01-dashboard.png" alt="Dashboard"/> -->
+      <div class="ss-placeholder">📊</div>
+      <div class="ss-label">Dashboard</div>
+    </div>
+    <div class="screenshot-wrap">
+      <!-- Replace with: <img src="assets/screenshots/mobile-02-ledger.png" alt="Ledger"/> -->
+      <div class="ss-placeholder">📒</div>
+      <div class="ss-label">Ledger View</div>
+    </div>
+    <div class="screenshot-wrap">
+      <!-- Replace with: <img src="assets/screenshots/mobile-03-transaction.png" alt="Transaction"/> -->
+      <div class="ss-placeholder">💸</div>
+      <div class="ss-label">Add Transaction</div>
+    </div>
+    <div class="screenshot-wrap">
+      <!-- Replace with: <img src="assets/screenshots/mobile-04-reports.png" alt="Reports"/> -->
+      <div class="ss-placeholder">📈</div>
+      <div class="ss-label">Reports</div>
+    </div>
+  </div>
+</div>
+
+<!-- SCREENSHOTS: DESKTOP -->
+<div class="section">
+  <h2 class="section-title">Desktop Screenshots</h2>
+  <p class="section-sub">Available for Windows, macOS, and Linux.</p>
+  <div class="desktop-grid">
+    <div class="screenshot-wrap desktop-ss">
+      <!-- Replace with: <img src="assets/screenshots/desktop-01-dashboard.png" alt="Desktop Dashboard"/> -->
+      <div class="ss-placeholder">🖥️</div>
+      <div class="ss-label">Desktop — Dashboard</div>
+    </div>
+    <div class="screenshot-wrap desktop-ss">
+      <!-- Replace with: <img src="assets/screenshots/desktop-02-ledger.png" alt="Desktop Ledger"/> -->
+      <div class="ss-placeholder">📋</div>
+      <div class="ss-label">Desktop — Ledger View</div>
+    </div>
+    <div class="screenshot-wrap desktop-ss">
+      <!-- Replace with: <img src="assets/screenshots/desktop-03-journal.png" alt="Desktop Journal"/> -->
+      <div class="ss-placeholder">✏️</div>
+      <div class="ss-label">Desktop — Journal Entry</div>
+    </div>
+    <div class="screenshot-wrap desktop-ss">
+      <!-- Replace with: <img src="assets/screenshots/desktop-04-reports.png" alt="Desktop Reports"/> -->
+      <div class="ss-placeholder">📑</div>
+      <div class="ss-label">Desktop — Reports & Export</div>
+    </div>
+  </div>
+</div>
+
 <!-- REVIEWS -->
+
 <div class="section">
   <div class="section-label">User Reviews</div>
   <h2 class="section-title">Loved by users across Nepal</h2>
@@ -511,6 +645,9 @@
     <div class="cta-buttons">
       <a class="btn-primary" href="https://play.google.com/store/apps/details?id=com.edev.accountsir" target="_blank">
         ▶ Download on Google Play
+      </a>
+      <a class="btn-primary" href="https://github.com/edev2/accountpro/tree/main/releases" target="_blank" style="background:#6366F1;box-shadow:0 4px 24px rgba(99,102,241,.3);">
+        🖥️ Desktop Release
       </a>
       <a class="btn-secondary" href="mailto:gkpointnepal@gmail.com">
         ✉ Contact Developer
