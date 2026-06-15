@@ -1,532 +1,132 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Account Pro – Double-Entry Accounting, Simplified</title>
-  <meta name="description" content="Track your net worth, manage accounts. Simplifying accounting and bookkeeping with the double-entry system."/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<div align="center">
 
-    :root {
-      --navy:    #0F172A;
-      --card:    #1E293B;
-      --border:  #2D3F55;
-      --slate:   #64748B;
-      --white:   #F8FAFC;
-      --green:   #10B981;
-      --green-d: #059669;
-      --red:     #F43F5E;
-    }
+<img src="https://play-lh.googleusercontent.com/MkVpKAVGD2bX0LzjoCIMJFgYpndAVFUOxL1PTsJcaoEy5tKvg2mKZiY7Kzilm5G8Ns1dfrWXNGSxwF_ubwdNvA=w240-h480" width="100" height="100" style="border-radius: 20px;" alt="Account Pro Logo"/>
 
-    html { scroll-behavior: smooth; }
+# Account Pro: Account Manager
 
-    body {
-      background: var(--navy);
-      color: var(--white);
-      font-family: 'Inter', sans-serif;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
+**Double-Entry Accounting, Simplified.**  
+Track your net worth, manage accounts, and keep your books balanced — fully offline.
 
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.1rem 2rem;
-      background: rgba(15,23,42,0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-logo { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--white); text-decoration: none; }
-    .nav-logo span { color: var(--green); }
-    .nav-cta {
-      background: var(--green); color: #fff; text-decoration: none;
-      padding: .5rem 1.25rem; border-radius: 8px;
-      font-size: .875rem; font-weight: 600;
-      transition: background .2s;
-    }
-    .nav-cta:hover { background: var(--green-d); }
+[![Play Store](https://img.shields.io/badge/Google_Play-Download_Free-10B981?style=for-the-badge&logo=google-play&logoColor=white)](https://play.google.com/store/apps/details?id=com.edev.accountsir)
+[![Rating](https://img.shields.io/badge/Rating-4.9★-FBBF24?style=for-the-badge)](https://play.google.com/store/apps/details?id=com.edev.accountsir)
+[![Downloads](https://img.shields.io/badge/Downloads-1K+-6366F1?style=for-the-badge)](https://play.google.com/store/apps/details?id=com.edev.accountsir)
+[![Offline](https://img.shields.io/badge/Works-Fully_Offline-0F172A?style=for-the-badge&logo=android&logoColor=white)](https://play.google.com/store/apps/details?id=com.edev.accountsir)
 
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      display: flex; align-items: center;
-      padding: 7rem 2rem 4rem;
-      max-width: 1140px; margin: 0 auto;
-      gap: 3rem;
-    }
-    .hero-text { flex: 1; }
-    .eyebrow {
-      display: inline-flex; align-items: center; gap: .5rem;
-      background: rgba(16,185,129,.12); color: var(--green);
-      font-size: .8rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
-      padding: .35rem .85rem; border-radius: 99px; margin-bottom: 1.5rem;
-      border: 1px solid rgba(16,185,129,.25);
-    }
-    .eyebrow-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
-
-    h1 {
-      font-family: 'Sora', sans-serif;
-      font-size: clamp(2.4rem, 5vw, 3.8rem);
-      font-weight: 800; line-height: 1.1;
-      margin-bottom: 1.25rem;
-    }
-    h1 em { font-style: normal; color: var(--green); }
-
-    .hero-sub {
-      color: #94A3B8; font-size: 1.1rem; max-width: 480px;
-      margin-bottom: 2.25rem; line-height: 1.7;
-    }
-
-    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: .5rem;
-      background: var(--green); color: #fff;
-      padding: .85rem 1.75rem; border-radius: 10px;
-      font-weight: 600; font-size: 1rem; text-decoration: none;
-      transition: background .2s, transform .15s;
-      box-shadow: 0 4px 24px rgba(16,185,129,.3);
-    }
-    .btn-primary:hover { background: var(--green-d); transform: translateY(-1px); }
-    .btn-secondary {
-      display: inline-flex; align-items: center; gap: .5rem;
-      border: 1px solid var(--border); color: var(--white);
-      padding: .85rem 1.75rem; border-radius: 10px;
-      font-weight: 600; font-size: 1rem; text-decoration: none;
-      transition: border-color .2s, background .2s;
-    }
-    .btn-secondary:hover { border-color: var(--green); background: rgba(16,185,129,.06); }
-
-    /* ── LEDGER WIDGET ── */
-    .hero-visual { flex: 1; max-width: 420px; }
-    .ledger-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 24px 80px rgba(0,0,0,.5);
-      animation: floatY 4s ease-in-out infinite;
-    }
-    @keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
-
-    .ledger-header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1rem 1.25rem;
-      background: rgba(16,185,129,.08);
-      border-bottom: 1px solid var(--border);
-    }
-    .ledger-title { font-family: 'Sora', sans-serif; font-size: .85rem; font-weight: 600; color: var(--green); }
-    .ledger-badge { font-size: .7rem; background: var(--green); color:#fff; padding:.2rem .6rem; border-radius: 99px; font-weight: 600; }
-
-    .ledger-cols {
-      display: grid; grid-template-columns: 1fr 1fr;
-    }
-    .ledger-col { padding: 1rem 1.25rem; }
-    .ledger-col:first-child { border-right: 1px solid var(--border); }
-    .col-label { font-size: .7rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--slate); margin-bottom: .75rem; }
-    .ledger-row {
-      display: flex; justify-content: space-between; align-items: center;
-      font-size: .82rem; padding: .35rem 0; border-bottom: 1px solid rgba(45,63,85,.5);
-    }
-    .ledger-row:last-child { border-bottom: none; }
-    .ledger-row .acc { color: #94A3B8; }
-    .ledger-row .amt-dr { color: var(--white); font-weight: 500; }
-    .ledger-row .amt-cr { color: var(--green); font-weight: 500; }
-
-    .ledger-footer {
-      display: grid; grid-template-columns: 1fr 1fr;
-      border-top: 1px solid var(--border);
-    }
-    .ledger-total {
-      padding: .85rem 1.25rem;
-      font-family: 'Sora', sans-serif; font-size: .9rem; font-weight: 700;
-    }
-    .ledger-total:first-child { border-right: 1px solid var(--border); color: var(--white); }
-    .ledger-total:last-child { color: var(--green); }
-    .total-label { font-size: .65rem; font-weight: 400; color: var(--slate); text-transform: uppercase; letter-spacing: .08em; }
-
-    .net-bar {
-      padding: 1rem 1.25rem;
-      border-top: 1px solid var(--border);
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .net-label { font-size: .8rem; color: var(--slate); }
-    .net-value { font-family: 'Sora', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--green); }
-
-    /* ── STATS ── */
-    .stats {
-      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-      background: rgba(30,41,59,.4);
-    }
-    .stats-inner {
-      max-width: 1140px; margin: 0 auto;
-      display: flex; justify-content: center;
-      padding: 2rem;
-      gap: 3rem; flex-wrap: wrap;
-    }
-    .stat { text-align: center; }
-    .stat-val { font-family: 'Sora', sans-serif; font-size: 1.9rem; font-weight: 800; color: var(--white); }
-    .stat-val span { color: var(--green); }
-    .stat-label { font-size: .8rem; color: var(--slate); margin-top: .25rem; }
-
-    /* ── FEATURES ── */
-    .section { max-width: 1140px; margin: 0 auto; padding: 5rem 2rem; }
-    .section-label {
-      font-size: .8rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
-      color: var(--green); margin-bottom: .75rem;
-    }
-    .section-title {
-      font-family: 'Sora', sans-serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-      font-weight: 700; margin-bottom: 1rem;
-    }
-    .section-sub { color: #94A3B8; max-width: 560px; font-size: 1rem; margin-bottom: 3rem; }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.25rem;
-    }
-    .feat-card {
-      background: var(--card); border: 1px solid var(--border); border-radius: 14px;
-      padding: 1.5rem; transition: border-color .2s, transform .2s;
-    }
-    .feat-card:hover { border-color: var(--green); transform: translateY(-3px); }
-    .feat-icon {
-      width: 42px; height: 42px; border-radius: 10px;
-      background: rgba(16,185,129,.12); display: flex; align-items: center; justify-content: center;
-      font-size: 1.25rem; margin-bottom: 1rem;
-      border: 1px solid rgba(16,185,129,.2);
-    }
-    .feat-title { font-family: 'Sora', sans-serif; font-weight: 600; font-size: .95rem; margin-bottom: .4rem; }
-    .feat-desc { color: #94A3B8; font-size: .85rem; line-height: 1.6; }
-
-    /* ── DOUBLE ENTRY EXPLAINER ── */
-    .entry-section {
-      background: rgba(30,41,59,.4); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-    }
-    .entry-inner {
-      max-width: 1140px; margin: 0 auto; padding: 5rem 2rem;
-      display: flex; gap: 4rem; align-items: center; flex-wrap: wrap;
-    }
-    .entry-text { flex: 1; min-width: 280px; }
-    .entry-demo { flex: 1; min-width: 280px; }
-
-    .journal-card {
-      background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden;
-    }
-    .journal-header {
-      padding: .75rem 1.25rem; border-bottom: 1px solid var(--border);
-      font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: var(--slate);
-      display: flex; justify-content: space-between;
-    }
-    .journal-row {
-      display: grid; grid-template-columns: 1fr auto auto;
-      gap: 1rem; align-items: center;
-      padding: .7rem 1.25rem; border-bottom: 1px solid rgba(45,63,85,.5);
-      font-size: .85rem;
-    }
-    .journal-row:last-child { border-bottom: none; }
-    .j-acc { color: var(--white); }
-    .j-acc.indent { padding-left: 1.25rem; color: #94A3B8; }
-    .j-dr { color: var(--white); font-weight: 600; min-width: 70px; text-align: right; }
-    .j-cr { color: var(--green); font-weight: 600; min-width: 70px; text-align: right; }
-    .j-empty { min-width: 70px; }
-
-    .balance-check {
-      display: flex; align-items: center; gap: .75rem;
-      margin-top: 1rem; padding: .85rem 1.25rem;
-      background: rgba(16,185,129,.08); border-radius: 10px;
-      border: 1px solid rgba(16,185,129,.25); font-size: .85rem;
-    }
-    .balance-check .check { font-size: 1rem; }
-    .balance-check strong { color: var(--green); }
-
-    /* ── TESTIMONIALS ── */
-    .reviews-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.25rem; margin-top: 2.5rem;
-    }
-    .review-card {
-      background: var(--card); border: 1px solid var(--border); border-radius: 14px;
-      padding: 1.5rem;
-    }
-    .stars { color: #FBBF24; font-size: 1rem; margin-bottom: .75rem; letter-spacing: .1em; }
-    .review-text { color: #CBD5E1; font-size: .88rem; line-height: 1.65; margin-bottom: 1rem; }
-    .reviewer { font-size: .8rem; color: var(--slate); }
-    .reviewer strong { color: #94A3B8; }
-
-    /* ── CTA ── */
-    .cta-section {
-      max-width: 1140px; margin: 0 auto; padding: 5rem 2rem; text-align: center;
-    }
-    .cta-card {
-      background: var(--card); border: 1px solid var(--border); border-radius: 20px;
-      padding: 4rem 2rem;
-      background: linear-gradient(135deg, #1E293B 0%, #0F2137 100%);
-      position: relative; overflow: hidden;
-    }
-    .cta-glow {
-      position: absolute; width: 400px; height: 400px;
-      background: radial-gradient(circle, rgba(16,185,129,.15) 0%, transparent 70%);
-      top: 50%; left: 50%; transform: translate(-50%,-50%);
-      pointer-events: none;
-    }
-    .cta-card h2 {
-      font-family: 'Sora', sans-serif; font-size: clamp(1.6rem, 3vw, 2.4rem);
-      font-weight: 800; margin-bottom: 1rem; position: relative;
-    }
-    .cta-card p { color: #94A3B8; margin-bottom: 2rem; max-width: 460px; margin-left: auto; margin-right: auto; position: relative; }
-    .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; }
-
-    /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 2rem;
-      text-align: center;
-      color: var(--slate); font-size: .82rem;
-    }
-    footer a { color: var(--green); text-decoration: none; }
-
-    /* ── MOBILE ── */
-    @media (max-width: 720px) {
-      .hero { flex-direction: column; padding-top: 6rem; }
-      .hero-visual { max-width: 100%; width: 100%; }
-      .entry-inner { flex-direction: column; }
-      .stats-inner { gap: 1.5rem; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .ledger-card, .eyebrow-dot { animation: none; }
-    }
-  </style>
-</head>
-<body>
-
-<!-- NAV -->
-<nav>
-  <a class="nav-logo" href="#"><span>Account</span> Pro</a>
-  <a class="nav-cta" href="https://play.google.com/store/apps/details?id=com.edev.accountsir" target="_blank">Download Free</a>
-</nav>
-
-<!-- HERO -->
-<section>
-  <div class="hero">
-    <div class="hero-text">
-      <div class="eyebrow"><span class="eyebrow-dot"></span>Double-Entry Accounting App</div>
-      <h1>Your finances,<br/><em>properly balanced.</em></h1>
-      <p class="hero-sub">
-        Account Pro brings the rigour of double-entry bookkeeping to your pocket. 
-        Track net worth, manage unlimited accounts, and see exactly where every rupee goes — fully offline.
-      </p>
-      <div class="hero-actions">
-        <a class="btn-primary" href="https://play.google.com/store/apps/details?id=com.edev.accountsir" target="_blank">
-          ▶ Get on Google Play
-        </a>
-        <a class="btn-secondary" href="#features">
-          See Features →
-        </a>
-      </div>
-    </div>
-
-    <div class="hero-visual">
-      <div class="ledger-card">
-        <div class="ledger-header">
-          <span class="ledger-title">Ledger — Cash Account</span>
-          <span class="ledger-badge">BALANCED</span>
-        </div>
-        <div class="ledger-cols">
-          <div class="ledger-col">
-            <div class="col-label">Dr (Debit)</div>
-            <div class="ledger-row"><span class="acc">Opening Bal.</span><span class="amt-dr">50,000</span></div>
-            <div class="ledger-row"><span class="acc">Sales</span><span class="amt-dr">28,500</span></div>
-            <div class="ledger-row"><span class="acc">Loan Rcvd.</span><span class="amt-dr">20,000</span></div>
-          </div>
-          <div class="ledger-col">
-            <div class="col-label">Cr (Credit)</div>
-            <div class="ledger-row"><span class="acc">Rent Paid</span><span class="amt-cr">15,000</span></div>
-            <div class="ledger-row"><span class="acc">Salaries</span><span class="amt-cr">25,000</span></div>
-            <div class="ledger-row"><span class="acc">Supplies</span><span class="amt-cr">8,200</span></div>
-          </div>
-        </div>
-        <div class="ledger-footer">
-          <div class="ledger-total"><div class="total-label">Total Dr</div>98,500</div>
-          <div class="ledger-total"><div class="total-label">Balance Cr</div>50,300</div>
-        </div>
-        <div class="net-bar">
-          <span class="net-label">Net Worth</span>
-          <span class="net-value">+ Rs 50,300</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- STATS -->
-<div class="stats">
-  <div class="stats-inner">
-    <div class="stat"><div class="stat-val">4.9<span>★</span></div><div class="stat-label">Play Store Rating</div></div>
-    <div class="stat"><div class="stat-val">1K<span>+</span></div><div class="stat-label">Downloads</div></div>
-    <div class="stat"><div class="stat-val">100<span>%</span></div><div class="stat-label">Offline — No Internet Needed</div></div>
-    <div class="stat"><div class="stat-val">0<span> ads</span></div><div class="stat-label">Distraction-Free Experience</div></div>
-  </div>
 </div>
 
-<!-- FEATURES -->
-<div id="features" class="section">
-  <div class="section-label">What's inside</div>
-  <h2 class="section-title">Everything an accountant expects.<br/>Nothing you don't need.</h2>
-  <p class="section-sub">Built on real accounting principles — not just a glorified note-taking app.</p>
+---
 
-  <div class="features-grid">
-    <div class="feat-card">
-      <div class="feat-icon">⚖️</div>
-      <div class="feat-title">Double-Entry System</div>
-      <div class="feat-desc">Every transaction has a matching debit and credit. Your books stay balanced the way they should be.</div>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon">📴</div>
-      <div class="feat-title">Fully Offline</div>
-      <div class="feat-desc">No internet, no server dependency. Your data stays on your device and is always accessible.</div>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon">📱</div>
-      <div class="feat-title">Multi-Device Support</div>
-      <div class="feat-desc">Seamlessly sync and use across mobile and web. Switch devices without missing a beat.</div>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon">🏢</div>
-      <div class="feat-title">Multiple Companies</div>
-      <div class="feat-desc">Manage separate books for different businesses or personal entities from one app.</div>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon">🔁</div>
-      <div class="feat-title">Recurring Transactions</div>
-      <div class="feat-desc">Set up salary, rent, or subscriptions once. Account Pro handles the repetition automatically.</div>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon">📊</div>
-      <div class="feat-title">Ledgers & Reports</div>
-      <div class="feat-desc">View, filter, and print detailed ledgers for any account or date range with one tap.</div>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon">📥</div>
-      <div class="feat-title">Excel Import / Export</div>
-      <div class="feat-desc">Bring in existing data or export your books to Excel for sharing with an accountant or auditor.</div>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon">💾</div>
-      <div class="feat-title">Auto Backup & Restore</div>
-      <div class="feat-desc">Never lose your data. Automatic backups ensure your financial history is always safe.</div>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon">📚</div>
-      <div class="feat-title">Accounting Learning Notes</div>
-      <div class="feat-desc">Built-in slides and notes to help beginners understand accounting concepts as they go.</div>
-    </div>
-  </div>
+## 📌 What is Account Pro?
+
+While searching for a mobile accounting app, I found many options — but very few adhered to the principles of the **double-entry accounting system**. Accounting is everywhere, and people increasingly want to keep track of their wealth and financial well-being. That realization inspired this app.
+
+Account Pro is built with the **double-entry system at its core**, allowing users to create as many accounts as needed — ensuring accurate financial tracking and better insights into their finances.
+
+---
+
+## ✨ Features
+
+| Category | Features |
+|---|---|
+| 📒 **Accounting** | Double-entry system, account groups, unlimited accounts |
+| 💸 **Transactions** | Easy mode entry, recurring transactions, planned transactions |
+| 📊 **Reports** | View & print ledgers, net worth tracker, expense manager |
+| 📂 **Data** | Import/export via Excel, backup & restore database |
+| 🏢 **Multi-entity** | Switch between companies, multi-device support (mobile + web) |
+| 🔍 **Usability** | Easy search mode, fully offline, auto backup |
+| 📚 **Learning** | Notes and slides for basic accounting knowledge |
+
+---
+
+## ⚖️ The Double-Entry Principle
+
+Every transaction in Account Pro creates **two matching entries** — a debit and a credit — keeping your books in perfect balance at all times.
+
+```
+┌─────────────────────────────────────────────────┐
+│           JOURNAL ENTRY EXAMPLE                 │
+├─────────────────────────┬───────────┬───────────┤
+│ Account                 │  Dr (₨)   │  Cr (₨)   │
+├─────────────────────────┼───────────┼───────────┤
+│ Cash Account            │  25,000   │           │
+│     Sales Account       │           │  25,000   │
+├─────────────────────────┼───────────┼───────────┤
+│ Bank Account            │  10,000   │           │
+│     Loan Account        │           │  10,000   │
+├─────────────────────────┼───────────┼───────────┤
+│ Total                   │  35,000   │  35,000 ✅ │
+└─────────────────────────┴───────────┴───────────┘
+        Debits ALWAYS equal Credits — guaranteed.
+```
+
+---
+
+## 🔒 Privacy & Data Safety
+
+- ✅ **No data shared** with third parties
+- ✅ **No data collected** from users
+- ✅ Data is **encrypted in transit**
+- ✅ You can **request data deletion** at any time
+- ✅ **Zero ads** while you use the app — we promise
+
+---
+
+## 🗺️ Roadmap
+
+- [x] Double-entry accounting system
+- [x] Multi-device support (mobile + web)
+- [x] Recurring & planned transactions
+- [x] Excel import/export
+- [x] Multiple company support
+- [ ] Complex journal entries (sales/purchase with tax)
+- [ ] More financial charts and reports
+- [ ] Budgeting module
+- [ ] What do *you* want next? [Let us know →](mailto:gkpointnepal@gmail.com)
+
+---
+
+## ⭐ User Reviews
+
+> *"User friendly and good reporting layout compared with other apps. The developer has made great improvements since launch. Amazing!"*
+> — **Play Store User**, December 2025
+
+> *"The app is excellent. I'm happy to use it. Overall amazing work from the development team."*
+> — **Hures Mohammed**, March 2025
+
+> *"Very useful for study. Helped me a lot understanding accounting concepts."*
+> — **Ram Chandra Shrestha**, February 2023
+
+---
+
+## 📲 Download
+
+<div align="center">
+
+[![Get it on Google Play](https://img.shields.io/badge/GET_IT_ON-Google_Play-10B981?style=for-the-badge&logo=google-play&logoColor=white)](https://play.google.com/store/apps/details?id=com.edev.accountsir)
+
 </div>
 
-<!-- DOUBLE ENTRY EXPLAINER -->
-<div class="entry-section">
-  <div class="entry-inner">
-    <div class="entry-text">
-      <div class="section-label">The Core Principle</div>
-      <h2 class="section-title">Built on the<br/><em style="font-style:normal;color:var(--green)">double-entry</em><br/>system</h2>
-      <p style="color:#94A3B8;margin-top:1rem;line-height:1.75;font-size:.95rem;">
-        Most finance apps are just expense trackers. Account Pro is built on the same system used by every professional accountant since the 15th century — where every transaction affects two accounts, keeping your books perfectly in balance at all times.
-      </p>
-      <div class="balance-check" style="margin-top:1.5rem;">
-        <span class="check">✅</span>
-        <span>Total Debits <strong>always equal</strong> Total Credits — guaranteed.</span>
-      </div>
-    </div>
-    <div class="entry-demo">
-      <div class="journal-card">
-        <div class="journal-header">
-          <span>Account</span><span>Debit (Dr)</span><span>Credit (Cr)</span>
-        </div>
-        <div class="journal-row">
-          <span class="j-acc">Cash Account</span>
-          <span class="j-dr">25,000</span>
-          <span class="j-empty"></span>
-        </div>
-        <div class="journal-row">
-          <span class="j-acc indent">Sales Account</span>
-          <span class="j-empty"></span>
-          <span class="j-cr">25,000</span>
-        </div>
-        <div class="journal-row" style="border-top:1px solid var(--border);margin-top:.25rem;">
-          <span class="j-acc">Bank Account</span>
-          <span class="j-dr">10,000</span>
-          <span class="j-empty"></span>
-        </div>
-        <div class="journal-row">
-          <span class="j-acc indent">Loan Account</span>
-          <span class="j-empty"></span>
-          <span class="j-cr">10,000</span>
-        </div>
-        <div class="journal-row" style="border-top:1px solid rgba(16,185,129,.3); background:rgba(16,185,129,.05);">
-          <span class="j-acc" style="color:var(--green);font-weight:600;">Total</span>
-          <span class="j-dr" style="color:var(--white);">35,000</span>
-          <span class="j-cr">35,000</span>
-        </div>
-      </div>
-    </div>
-  </div>
+---
+
+## 📬 Contact & Support
+
+| | |
+|---|---|
+| 🌐 **Website** | [edevpandey.com.np](http://www.edevpandey.com.np) |
+| 📧 **Email** | [gkpointnepal@gmail.com](mailto:gkpointnepal@gmail.com) |
+| 🔏 **Privacy Policy** | [View Policy](https://sites.google.com/view/accsir/privacy-policy) |
+| 📦 **Package ID** | `com.edev.accountsir` |
+
+---
+
+## ⚠️ Disclaimer
+
+Please use this app at your own discretion. While we strive to provide accurate and reliable features, we cannot guarantee the completeness or accuracy of the information. We are not responsible for any financial damages or losses that may occur as a result of using this app. This app does not represent any government entity.
+
+---
+
+<div align="center">
+
+Made with ❤️ in Nepal by [Dev Pandey](http://www.edevpandey.com.np)
+
 </div>
-
-<!-- REVIEWS -->
-<div class="section">
-  <div class="section-label">User Reviews</div>
-  <h2 class="section-title">Loved by users across Nepal</h2>
-  <div class="reviews-grid">
-    <div class="review-card">
-      <div class="stars">★★★★★</div>
-      <p class="review-text">"User friendly and good reporting layout compared with other apps. The developer has made great improvements since launch. Amazing!"</p>
-      <div class="reviewer"><strong>Accounts User</strong> — December 2025</div>
-    </div>
-    <div class="review-card">
-      <div class="stars">★★★★★</div>
-      <p class="review-text">"The app is excellent. I'm happy to use it. Overall amazing work from the development team."</p>
-      <div class="reviewer"><strong>Hures Mohammed</strong> — March 2025</div>
-    </div>
-    <div class="review-card">
-      <div class="stars">★★★★★</div>
-      <p class="review-text">"Very useful for study. Helped me a lot understanding accounting concepts in a practical way."</p>
-      <div class="reviewer"><strong>Ram Chandra Shrestha</strong> — February 2023</div>
-    </div>
-  </div>
-</div>
-
-<!-- CTA -->
-<div class="cta-section">
-  <div class="cta-card">
-    <div class="cta-glow"></div>
-    <h2>Start managing your finances the right way.</h2>
-    <p>Free to download. No ads while you work. No data collected. Just clean, honest bookkeeping.</p>
-    <div class="cta-buttons">
-      <a class="btn-primary" href="https://play.google.com/store/apps/details?id=com.edev.accountsir" target="_blank">
-        ▶ Download on Google Play
-      </a>
-      <a class="btn-secondary" href="mailto:gkpointnepal@gmail.com">
-        ✉ Contact Developer
-      </a>
-    </div>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <p>© 2026 Account Pro · Developed by <a href="http://www.edevpandey.com.np" target="_blank">Dev Pandey</a> · Nepal</p>
-  <p style="margin-top:.5rem;">
-    <a href="https://sites.google.com/view/accsir/privacy-policy" target="_blank">Privacy Policy</a> &nbsp;·&nbsp;
-    <a href="mailto:gkpointnepal@gmail.com">Support</a>
-  </p>
-</footer>
-
-</body>
-</html>
