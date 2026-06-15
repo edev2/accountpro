@@ -1,17 +1,78 @@
 <div align="center">
 
-<img src="https://play-lh.googleusercontent.com/MkVpKAVGD2bX0LzjoCIMJFgYpndAVFUOxL1PTsJcaoEy5tKvg2mKZiY7Kzilm5G8Ns1dfrWXNGSxwF_ubwdNvA=w240-h480" width="100" height="100" style="border-radius: 20px;" alt="Account Pro Logo"/>
+<img src="https://play-lh.googleusercontent.com/MkVpKAVGD2bX0LzjoCIMJFgYpndAVFUOxL1PTsJcaoEy5tKvg2mKZiY7Kzilm5G8Ns1dfrWXNGSxwF_ubwdNvA=w240-h480" width="100" height="100" alt="Account Pro Logo"/>
 
 # Account Pro: Account Manager
 
 **Double-Entry Accounting, Simplified.**  
 Track your net worth, manage accounts, and keep your books balanced — fully offline.
 
-[![Play Store](https://img.shields.io/badge/Google_Play-Download_Free-10B981?style=for-the-badge&logo=google-play&logoColor=white)](https://play.google.com/store/apps/details?id=com.edev.accountsir)
+[![Play Store](https://img.shields.io/badge/Android-Google_Play-10B981?style=for-the-badge&logo=google-play&logoColor=white)](https://play.google.com/store/apps/details?id=com.edev.accountsir)
+[![Desktop](https://img.shields.io/badge/Desktop-Windows_%2F_Mac_%2F_Linux-6366F1?style=for-the-badge&logo=github&logoColor=white)](https://github.com/edev2/accountpro/tree/main/releases)
 [![Rating](https://img.shields.io/badge/Rating-4.9★-FBBF24?style=for-the-badge)](https://play.google.com/store/apps/details?id=com.edev.accountsir)
-[![Downloads](https://img.shields.io/badge/Downloads-1K+-6366F1?style=for-the-badge)](https://play.google.com/store/apps/details?id=com.edev.accountsir)
-[![Offline](https://img.shields.io/badge/Works-Fully_Offline-0F172A?style=for-the-badge&logo=android&logoColor=white)](https://play.google.com/store/apps/details?id=com.edev.accountsir)
+[![Downloads](https://img.shields.io/badge/Downloads-1K+-0F172A?style=for-the-badge)](https://play.google.com/store/apps/details?id=com.edev.accountsir)
+[![Offline](https://img.shields.io/badge/Works-Fully_Offline-2D3F55?style=for-the-badge&logo=android&logoColor=white)](https://play.google.com/store/apps/details?id=com.edev.accountsir)
 
+</div>
+
+---
+
+## 📸 Screenshots
+
+### 📱 Mobile (Android)
+
+<!-- Replace the src values below with your actual screenshot paths, e.g. assets/screenshots/mobile-dashboard.png -->
+
+<div align="center">
+<table>
+  <tr>
+    <td align="center">
+      <img src="assets/screenshots/mobile-01-dashboard.png" width="200" alt="Dashboard"/>
+      <br/><sub>Dashboard</sub>
+    </td>
+    <td align="center">
+      <img src="assets/screenshots/mobile-02-ledger.png" width="200" alt="Ledger View"/>
+      <br/><sub>Ledger View</sub>
+    </td>
+    <td align="center">
+      <img src="assets/screenshots/mobile-03-transaction.png" width="200" alt="Add Transaction"/>
+      <br/><sub>Add Transaction</sub>
+    </td>
+    <td align="center">
+      <img src="assets/screenshots/mobile-04-reports.png" width="200" alt="Reports"/>
+      <br/><sub>Reports</sub>
+    </td>
+  </tr>
+</table>
+</div>
+
+### 🖥️ Desktop (Windows / Mac / Linux)
+
+<!-- Replace the src values below with your actual desktop screenshot paths -->
+
+<div align="center">
+<table>
+  <tr>
+    <td align="center">
+      <img src="assets/screenshots/desktop-01-dashboard.png" width="380" alt="Desktop Dashboard"/>
+      <br/><sub>Dashboard</sub>
+    </td>
+    <td align="center">
+      <img src="assets/screenshots/desktop-02-ledger.png" width="380" alt="Desktop Ledger"/>
+      <br/><sub>Ledger View</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="assets/screenshots/desktop-03-journal.png" width="380" alt="Desktop Journal Entry"/>
+      <br/><sub>Journal Entry</sub>
+    </td>
+    <td align="center">
+      <img src="assets/screenshots/desktop-04-reports.png" width="380" alt="Desktop Reports"/>
+      <br/><sub>Reports & Export</sub>
+    </td>
+  </tr>
+</table>
 </div>
 
 ---
@@ -24,6 +85,17 @@ Account Pro is built with the **double-entry system at its core**, allowing user
 
 ---
 
+## 📦 Download
+
+| Platform | Link |
+|---|---|
+| 🤖 **Android** | [Google Play Store](https://play.google.com/store/apps/details?id=com.edev.accountsir) |
+| 🖥️ **Desktop** (Windows / Mac / Linux) | [GitHub Releases](https://github.com/edev2/accountpro/tree/main/releases) |
+
+> ℹ️ The desktop version runs on Windows, macOS, and Linux. Head to the [releases page](https://github.com/edev2/accountpro/tree/main/releases) and download the installer for your platform.
+
+---
+
 ## ✨ Features
 
 | Category | Features |
@@ -32,7 +104,7 @@ Account Pro is built with the **double-entry system at its core**, allowing user
 | 💸 **Transactions** | Easy mode entry, recurring transactions, planned transactions |
 | 📊 **Reports** | View & print ledgers, net worth tracker, expense manager |
 | 📂 **Data** | Import/export via Excel, backup & restore database |
-| 🏢 **Multi-entity** | Switch between companies, multi-device support (mobile + web) |
+| 🏢 **Multi-entity** | Switch between companies, multi-device support (mobile + web + desktop) |
 | 🔍 **Usability** | Easy search mode, fully offline, auto backup |
 | 📚 **Learning** | Notes and slides for basic accounting knowledge |
 
@@ -74,7 +146,7 @@ Every transaction in Account Pro creates **two matching entries** — a debit an
 ## 🗺️ Roadmap
 
 - [x] Double-entry accounting system
-- [x] Multi-device support (mobile + web)
+- [x] Multi-device support (mobile + web + desktop)
 - [x] Recurring & planned transactions
 - [x] Excel import/export
 - [x] Multiple company support
@@ -87,24 +159,14 @@ Every transaction in Account Pro creates **two matching entries** — a debit an
 
 ## ⭐ User Reviews
 
-> *"User friendly and good reporting layout compared with other apps. The developer has made great improvements since launch. Amazing!"*
+> *"User friendly and good reporting layout compared with other apps. The developer has made great improvements since launch. Amazing!"*  
 > — **Play Store User**, December 2025
 
-> *"The app is excellent. I'm happy to use it. Overall amazing work from the development team."*
+> *"The app is excellent. I'm happy to use it. Overall amazing work from the development team."*  
 > — **Hures Mohammed**, March 2025
 
-> *"Very useful for study. Helped me a lot understanding accounting concepts."*
+> *"Very useful for study. Helped me a lot understanding accounting concepts."*  
 > — **Ram Chandra Shrestha**, February 2023
-
----
-
-## 📲 Download
-
-<div align="center">
-
-[![Get it on Google Play](https://img.shields.io/badge/GET_IT_ON-Google_Play-10B981?style=for-the-badge&logo=google-play&logoColor=white)](https://play.google.com/store/apps/details?id=com.edev.accountsir)
-
-</div>
 
 ---
 
