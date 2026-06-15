@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Account Pro – User Manual</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Tokens ─────────────────────────────────────────── */
+    :root {
+      --ink:       #0f1117;
+      --ink-soft:  #4a4f5e;
+      --surface:   #f7f8fc;
+      --white:     #ffffff;
+      --accent:    #3654ff;
+      --accent-lt: #dce3ff;
+      --green:     #1db97a;
+      --green-lt:  #d3f5e6;
+      --amber:     #f59e0b;
+      --amber-lt:  #fef3c7;
+      --rule:      #e3e6f0;
+      --radius:    14px;
+    }
+
+    /* ── Reset ──────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--surface);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Nav ────────────────────────────────────────────── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(247,248,252,0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 clamp(1rem, 5vw, 3rem);
+      height: 60px;
+    }
+    .nav-brand {
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 700; font-size: 1.05rem; color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-brand .logo-mark {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 800; font-size: 0.85rem; letter-spacing: -0.5px;
+    }
+    .nav-links {
+      display: flex; gap: 1.5rem; list-style: none;
+      font-size: 0.88rem; font-weight: 500;
+    }
+    .nav-links a { color: var(--ink-soft); }
+    .nav-links a:hover { color: var(--ink); text-decoration: none; }
+    .nav-links a.active { color: var(--accent); }
+
+    /* ── Page layout ────────────────────────────────────── */
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 5vw, 2.5rem);
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 3rem;
+      padding-top: 2.5rem;
+      padding-bottom: 5rem;
+    }
+
+    /* ── Sidebar TOC ────────────────────────────────────── */
+    .toc {
+      position: sticky; top: 80px;
+      height: calc(100vh - 100px);
+      overflow-y: auto;
+      padding-right: 1rem;
+      font-size: 0.84rem;
+    }
+    .toc-label {
+      text-transform: uppercase; letter-spacing: 0.1em;
+      font-size: 0.72rem; font-weight: 600;
+      color: var(--ink-soft); margin-bottom: 0.75rem;
+    }
+    .toc ul { list-style: none; }
+    .toc > ul > li { margin-bottom: 0.15rem; }
+    .toc a {
+      display: block; padding: 0.3rem 0.6rem;
+      border-radius: 6px; color: var(--ink-soft);
+      font-weight: 500; transition: all 0.15s;
+    }
+    .toc a:hover { background: var(--accent-lt); color: var(--accent); text-decoration: none; }
+    .toc ul ul { margin-left: 0.75rem; margin-top: 0.1rem; }
+    .toc ul ul a { font-weight: 400; font-size: 0.82rem; }
+
+    /* ── Main content ───────────────────────────────────── */
+    main { min-width: 0; }
+
+    /* ── Hero ───────────────────────────────────────────── */
+    .hero {
+      background: var(--accent);
+      border-radius: var(--radius);
+      padding: clamp(2rem, 5vw, 3rem);
+      color: #fff;
+      margin-bottom: 2.5rem;
+      position: relative; overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; right: -40px; top: -40px;
+      width: 260px; height: 260px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.07);
+    }
+    .hero::before {
+      content: '';
+      position: absolute; right: 60px; bottom: -70px;
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,0.18);
+      border-radius: 100px; padding: 4px 12px;
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em;
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      line-height: 1.15;
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+    }
+    .hero p {
+      font-size: 1rem; opacity: 0.88; max-width: 480px;
+      line-height: 1.6;
+    }
+    .hero-cta {
+      margin-top: 1.5rem;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #fff; color: var(--accent);
+      border-radius: 100px; padding: 10px 22px;
+      font-weight: 600; font-size: 0.9rem;
+      transition: transform 0.15s;
+    }
+    .hero-cta:hover { transform: translateY(-2px); text-decoration: none; }
+
+    /* ── Section ────────────────────────────────────────── */
+    .section { margin-bottom: 3rem; }
+    .section-header {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 1.25rem;
+    }
+    .section-icon {
+      width: 34px; height: 34px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+    }
+    h2 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.6rem; font-weight: 400;
+    }
+    h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+    p { color: var(--ink-soft); font-size: 0.95rem; margin-bottom: 0.75rem; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ── Feature pills grid ─────────────────────────────── */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.75rem;
+    }
+    .feature-pill {
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      padding: 0.9rem 1rem;
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+    .feature-pill .icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 1px; }
+    .feature-pill span { font-size: 0.88rem; font-weight: 500; color: var(--ink); line-height: 1.35; }
+
+    /* ── Cards ──────────────────────────────────────────── */
+    .card {
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      padding: 1.4rem 1.6rem;
+      margin-bottom: 1rem;
+    }
+    .card:last-child { margin-bottom: 0; }
+
+    /* ── Step list ──────────────────────────────────────── */
+    .steps { display: flex; flex-direction: column; gap: 0.75rem; }
+    .step {
+      display: flex; gap: 1rem;
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      padding: 1.1rem 1.3rem;
+      align-items: flex-start;
+    }
+    .step-num {
+      width: 26px; height: 26px; border-radius: 50%;
+      background: var(--accent); color: #fff;
+      font-size: 0.78rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 1px;
+    }
+    .step-body h3 { margin-bottom: 0.2rem; }
+    .step-body p { font-size: 0.88rem; margin: 0; }
+
+    /* ── Info / tip boxes ───────────────────────────────── */
+    .tip {
+      border-radius: var(--radius);
+      padding: 1rem 1.2rem;
+      display: flex; gap: 0.75rem;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+    .tip.blue  { background: var(--accent-lt); }
+    .tip.green { background: var(--green-lt); }
+    .tip.amber { background: var(--amber-lt); }
+    .tip-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+    .tip p { font-size: 0.88rem; color: var(--ink); margin: 0; }
+    .tip strong { display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 0.2rem; }
+
+    /* ── Divider ────────────────────────────────────────── */
+    hr { border: none; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
+
+    /* ── Sync diagram ───────────────────────────────────── */
+    .sync-diagram {
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      padding: 2rem;
+      display: flex; align-items: center; justify-content: center;
+      gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1rem;
+    }
+    .sync-node {
+      background: var(--surface);
+      border: 2px solid var(--rule);
+      border-radius: 12px;
+      padding: 1.1rem 1.4rem;
+      text-align: center; min-width: 110px;
+    }
+    .sync-node .s-icon { font-size: 2rem; }
+    .sync-node span { display: block; font-size: 0.8rem; font-weight: 600; margin-top: 6px; color: var(--ink-soft); }
+    .sync-arrow { font-size: 1.5rem; color: var(--accent); font-weight: 700; }
+    .sync-server {
+      background: var(--accent);
+      color: #fff; border: none;
+    }
+    .sync-server span { color: rgba(255,255,255,0.8); }
+
+    /* ── Two-col ────────────────────────────────────────── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    /* ── Footer ─────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--rule);
+      text-align: center; padding: 2rem 1rem;
+      font-size: 0.82rem; color: var(--ink-soft);
+    }
+    footer a { color: var(--accent); }
+
+    /* ── Responsive ─────────────────────────────────────── */
+    @media (max-width: 780px) {
+      .page { grid-template-columns: 1fr; }
+      .toc { display: none; }
+      .two-col { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Navigation ───────────────────────────────────────── -->
+<nav>
+  <a class="nav-brand" href="#">
+    <div class="logo-mark">AP</div>
+    Account Pro
+  </a>
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#" class="active">User Manual</a></li>
+    <li><a href="#">Import Data</a></li>
+    <li><a href="#">Privacy Policy</a></li>
+  </ul>
+</nav>
+
+<!-- ── Page wrapper ──────────────────────────────────────── -->
+<div class="page">
+
+  <!-- ── Sidebar ─────────────────────────────────────────── -->
+  <aside class="toc">
+    <p class="toc-label">On this page</p>
+    <ul>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#features">Key Features</a></li>
+      <li><a href="#getting-started">Getting Started</a>
+        <ul>
+          <li><a href="#create-company">Create a Company</a></li>
+          <li><a href="#add-accounts">Add Accounts</a></li>
+          <li><a href="#add-transactions">Add Transactions</a></li>
+        </ul>
+      </li>
+      <li><a href="#journal">Journal Entries</a></li>
+      <li><a href="#ledger">Ledger &amp; Reports</a></li>
+      <li><a href="#sync">Mobile ↔ Web Sync</a>
+        <ul>
+          <li><a href="#how-sync">How It Works</a></li>
+          <li><a href="#setup-sync">Setting Up Sync</a></li>
+        </ul>
+      </li>
+      <li><a href="#backup">Backup &amp; Restore</a></li>
+      <li><a href="#import-export">Import &amp; Export</a></li>
+      <li><a href="#voucher-images">Voucher Images</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact &amp; Support</a></li>
+    </ul>
+  </aside>
+
+  <!-- ── Main ────────────────────────────────────────────── -->
+  <main>
+
+    <!-- Hero -->
+    <div class="hero" id="overview">
+      <div class="hero-badge">📖 User Manual</div>
+      <h1>Account Pro<br/>User Guide</h1>
+      <p>Everything you need to track your finances, manage accounts, and keep your books clean — on mobile and web.</p>
+      <a class="hero-cta" href="https://play.google.com/store/apps/details?id=com.edev.accountsir" target="_blank">
+        ▶ Download on Google Play
+      </a>
+    </div>
+
+    <!-- About -->
+    <div class="section">
+      <div class="tip blue">
+        <div class="tip-icon">ℹ️</div>
+        <p><strong>Free for personal use</strong>Account Pro is free to download and use. If you need a feature that's not there yet, reach out — we'll try to build it for you.</p>
+      </div>
+      <p>Account Pro is a double-entry accounting app designed for individuals, students, and small business owners. It keeps your books accurate, your data private (fully offline), and your workflow smooth — whether you're on a phone or a browser.</p>
+    </div>
+
+    <hr/>
+
+    <!-- Features -->
+    <div class="section" id="features">
+      <div class="section-header">
+        <div class="section-icon" style="background:#dce3ff">⚡</div>
+        <h2>Key Features</h2>
+      </div>
+      <div class="features-grid">
+        <div class="feature-pill"><span class="icon">🔒</span><span>Fully offline — your data never leaves your device by default</span></div>
+        <div class="feature-pill"><span class="icon">📒</span><span>Double-entry accounting system</span></div>
+        <div class="feature-pill"><span class="icon">🏢</span><span>Multi-company support — switch instantly</span></div>
+        <div class="feature-pill"><span class="icon">📝</span><span>Journal entries with complex multi-ledger support</span></div>
+        <div class="feature-pill"><span class="icon">🖼️</span><span>Attach images to vouchers</span></div>
+        <div class="feature-pill"><span class="icon">📊</span><span>View, print, and export ledgers as PDF</span></div>
+        <div class="feature-pill"><span class="icon">📥</span><span>Import &amp; export data via Excel</span></div>
+        <div class="feature-pill"><span class="icon">🔁</span><span>Recurring &amp; planned transactions</span></div>
+        <div class="feature-pill"><span class="icon">🌐</span><span>Web version with mobile sync</span></div>
+        <div class="feature-pill"><span class="icon">💾</span><span>Auto backup &amp; manual restore</span></div>
+        <div class="feature-pill"><span class="icon">🔍</span><span>Easy search mode</span></div>
+        <div class="feature-pill"><span class="icon">📚</span><span>Built-in accounting notes &amp; guides</span></div>
+      </div>
+    </div>
+
+    <hr/>
+
+    <!-- Getting Started -->
+    <div class="section" id="getting-started">
+      <div class="section-header">
+        <div class="section-icon" style="background:#d3f5e6">🚀</div>
+        <h2>Getting Started</h2>
+      </div>
+      <p>Follow these steps to set up Account Pro from scratch.</p>
+
+      <!-- Create Company -->
+      <div class="card" id="create-company">
+        <h3>1 · Create a Company</h3>
+        <p>A "Company" is your accounting workspace. You can have multiple companies (e.g. Personal, Business) and switch between them at any time.</p>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h3>Open Account Pro</h3>
+              <p>On first launch you'll be prompted to create your first company.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h3>Enter a company name</h3>
+              <p>Use a clear, consistent name (e.g. "My Business 2025"). This name is also used for cloud sync — keep it identical across devices.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h3>Choose currency &amp; fiscal year</h3>
+              <p>Set your preferred currency and the start month of your financial year.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <h3>Tap "Create Company"</h3>
+              <p>Your workspace is ready. You can add more companies later from the sidebar menu.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add Accounts -->
+      <div class="card" id="add-accounts">
+        <h3>2 · Add Accounts &amp; Account Groups</h3>
+        <p>Accounts represent financial categories (e.g. Cash, Bank, Sales Revenue). Group them under standard headings: Assets, Liabilities, Income, Expenses, Equity.</p>
+        <div class="tip amber">
+          <div class="tip-icon">💡</div>
+          <p><strong>Tip</strong>Account Pro comes with default account groups. You can add custom sub-groups to match your business structure.</p>
+        </div>
+        <div class="steps">
+          <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Go to Accounts</h3><p>Tap the Accounts icon in the bottom navigation.</p></div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Tap the + button</h3><p>Choose an account group, then enter a name and opening balance.</p></div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Save the account</h3><p>It will immediately appear in your chart of accounts.</p></div></div>
+        </div>
+      </div>
+
+      <!-- Add Transactions -->
+      <div class="card" id="add-transactions">
+        <h3>3 · Add Transactions</h3>
+        <p>Every transaction in Account Pro follows double-entry: every debit has a matching credit. You can use <strong>Easy Mode</strong> for quick entries, or <strong>Journal Entry</strong> for complex multi-ledger transactions.</p>
+        <div class="steps">
+          <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Tap + New Entry</h3><p>Select Easy Mode (two accounts) or Journal Entry (multiple accounts).</p></div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Select accounts &amp; amount</h3><p>Choose the debit and credit accounts, enter the amount and date.</p></div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Add a note or image</h3><p>Optionally attach a memo or voucher photo for reference.</p></div></div>
+          <div class="step"><div class="step-num">4</div><div class="step-body"><h3>Save</h3><p>The transaction is recorded and ledgers update instantly.</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <hr/>
+
+    <!-- Journal Entries -->
+    <div class="section" id="journal">
+      <div class="section-header">
+        <div class="section-icon" style="background:#fef3c7">📝</div>
+        <h2>Journal Entries</h2>
+      </div>
+      <p>Account Pro fully supports standard journal entries, including <strong>complex entries involving more than two ledgers</strong> in a single voucher.</p>
+      <div class="two-col">
+        <div class="card">
+          <h3>Simple Entry</h3>
+          <p>One debit, one credit. Use Easy Mode for day-to-day transactions like cash purchases or bank transfers.</p>
+        </div>
+        <div class="card">
+          <h3>Complex Entry</h3>
+          <p>Multiple debits or credits in a single voucher. Great for payroll, tax entries, or splitting purchases across departments.</p>
+        </div>
+      </div>
+      <div class="tip blue">
+        <div class="tip-icon">ℹ️</div>
+        <p><strong>Performance tested</strong>Account Pro has been tested with over <strong>10,000 entries</strong> without slowdowns — you don't need to worry about large datasets.</p>
+      </div>
+    </div>
+
+    <hr/>
+
+    <!-- Ledger & Reports -->
+    <div class="section" id="ledger">
+      <div class="section-header">
+        <div class="section-icon" style="background:#dce3ff">📊</div>
+        <h2>Ledger &amp; Reports</h2>
+      </div>
+      <p>View the full transaction history for any account, filter by date, and export when you need a paper trail.</p>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Open an Account</h3><p>From the Accounts screen, tap any account to open its ledger.</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Filter by Date Range</h3><p>Use the date picker at the top to narrow entries to a specific period.</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Print or Export as PDF</h3><p>Tap the share icon and choose Print or Save as PDF. The PDF is formatted cleanly for sharing with accountants or auditors.</p></div></div>
+      </div>
+    </div>
+
+    <hr/>
+
+    <!-- Sync -->
+    <div class="section" id="sync">
+      <div class="section-header">
+        <div class="section-icon" style="background:#d3f5e6">🔄</div>
+        <h2>Mobile ↔ Web Sync</h2>
+      </div>
+
+      <div id="how-sync">
+        <h3>How It Works</h3>
+        <p>Account Pro uses a server-assisted sync model. Since we keep the app free, we don't run a real-time sync server — instead, the mobile app uploads a compressed database snapshot every 15 minutes (only when new entries exist), and the web version lets you download the latest snapshot on demand.</p>
+
+        <div class="sync-diagram">
+          <div class="sync-node">
+            <div class="s-icon">📱</div>
+            <span>Mobile App</span>
+          </div>
+          <div class="sync-arrow">⟶</div>
+          <div class="sync-node sync-server">
+            <div class="s-icon">☁️</div>
+            <span>Cloud Server</span>
+          </div>
+          <div class="sync-arrow">⟶</div>
+          <div class="sync-node">
+            <div class="s-icon">🖥️</div>
+            <span>Web Version</span>
+          </div>
+        </div>
+
+        <div class="tip amber">
+          <div class="tip-icon">⚠️</div>
+          <p><strong>Important: Company names must match exactly</strong>The company name on your mobile app and web version must be identical (same spelling, same case) for sync to work correctly. Multiple companies sync independently.</p>
+        </div>
+      </div>
+
+      <div id="setup-sync" style="margin-top:1.5rem">
+        <h3>Setting Up Sync</h3>
+        <div class="two-col">
+          <div class="card">
+            <h3>📱 On Mobile</h3>
+            <p>Go to <strong>Settings → Sync</strong> and enable <strong>Automatic Sync</strong>. The app will upload your database every 15 minutes in the background whenever new entries are detected.</p>
+          </div>
+          <div class="card">
+            <h3>🖥️ On Web</h3>
+            <p>Open your company on the web version. Tap <strong>Download Latest Data</strong> to pull the most recent upload from your phone. Auto-download coming soon.</p>
+          </div>
+        </div>
+        <div class="tip green">
+          <div class="tip-icon">✅</div>
+          <p><strong>Check your database size</strong>If the database size shows 0.5 KB or less, no records have been uploaded yet. Make sure Automatic Sync is turned on in the mobile app.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr/>
+
+    <!-- Backup & Restore -->
+    <div class="section" id="backup">
+      <div class="section-header">
+        <div class="section-icon" style="background:#fef3c7">💾</div>
+        <h2>Backup &amp; Restore</h2>
+      </div>
+      <p>Your data lives on your device. Use the built-in backup tool to create a local copy you can move to another phone or keep as a safety net.</p>
+      <div class="two-col">
+        <div class="card">
+          <h3>Create a Backup</h3>
+          <p>Go to <strong>Settings → Backup &amp; Restore → Create Backup</strong>. A <code>.db</code> file will be saved to your chosen folder.</p>
+        </div>
+        <div class="card">
+          <h3>Restore from Backup</h3>
+          <p>Go to <strong>Settings → Backup &amp; Restore → Restore</strong>, then select your backup file. <em>Note: this replaces current data.</em></p>
+        </div>
+      </div>
+      <div class="tip blue">
+        <div class="tip-icon">💡</div>
+        <p>Enable <strong>Auto Backup</strong> to have the app create a daily backup automatically. We recommend also copying your backup to Google Drive or another cloud service.</p>
+      </div>
+    </div>
+
+    <hr/>
+
+    <!-- Import / Export -->
+    <div class="section" id="import-export">
+      <div class="section-header">
+        <div class="section-icon" style="background:#dce3ff">📥</div>
+        <h2>Import &amp; Export</h2>
+      </div>
+      <p>Move data in and out of Account Pro using Excel files — no manual re-entry needed.</p>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Export a template</h3><p>Go to <strong>Import/Export → Download Template</strong> to get the correct Excel format for accounts or transactions.</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Fill in your data</h3><p>Open the template in Excel or Google Sheets and enter your records, keeping the column headers intact.</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Import the file</h3><p>Tap <strong>Import → Select File</strong> and choose your filled Excel file. The app will validate and import your records.</p></div></div>
+      </div>
+      <div class="tip amber">
+        <div class="tip-icon">⚠️</div>
+        <p>Do not rename or reorder columns in the template. The importer depends on the column structure to map data correctly.</p>
+      </div>
+    </div>
+
+    <hr/>
+
+    <!-- Voucher Images -->
+    <div class="section" id="voucher-images">
+      <div class="section-header">
+        <div class="section-icon" style="background:#d3f5e6">🖼️</div>
+        <h2>Voucher Images</h2>
+      </div>
+      <p>Attach a photo of a receipt, bill, or invoice directly to any transaction voucher. Images are stored with your data and visible on both the mobile app and web version when synced.</p>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Open or create a transaction</h3><p>Tap any existing voucher, or create a new one.</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Tap "Attach Image"</h3><p>Choose from your gallery or take a photo directly in the app.</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Sync to see on web</h3><p>After enabling sync, voucher images are uploaded alongside the database and will appear on the web version.</p></div></div>
+      </div>
+    </div>
+
+    <hr/>
+
+    <!-- FAQ -->
+    <div class="section" id="faq">
+      <div class="section-header">
+        <div class="section-icon" style="background:#fef3c7">❓</div>
+        <h2>Frequently Asked Questions</h2>
+      </div>
+
+      <div class="card">
+        <h3>Is Account Pro really free?</h3>
+        <p>Yes. Account Pro is free for personal use. Almost all sections of the app are ad-free. Advertisements, where present, are minimal and non-intrusive.</p>
+      </div>
+      <div class="card">
+        <h3>Is my data safe? Does the app send data anywhere?</h3>
+        <p>The app is fully offline by default. Data is only uploaded to the cloud if you explicitly enable Automatic Sync. No data is shared with third parties.</p>
+      </div>
+      <div class="card">
+        <h3>Can I use Account Pro on multiple phones?</h3>
+        <p>Yes. Enable Automatic Sync on all devices and use the same company name. Each device will push its updates to the server, and you can pull the latest data on any device.</p>
+      </div>
+      <div class="card">
+        <h3>My sync shows 0.5 KB. What does that mean?</h3>
+        <p>A very small database file usually means no records have been uploaded yet. Make sure Automatic Sync is turned on in <strong>Settings → Sync</strong> and that you have at least one entry saved.</p>
+      </div>
+      <div class="card">
+        <h3>Can I use this for my small business?</h3>
+        <p>Account Pro is built on double-entry principles and supports multiple accounts, account groups, journal entries, and ledger printing — all features a small business needs. Reach out if you have specific requirements.</p>
+      </div>
+      <div class="card">
+        <h3>What's coming next?</h3>
+        <p>The roadmap includes complex journal entries for sales &amp; purchases with tax, more financial charts &amp; reports, and budgeting tools. Have a feature request? Let us know!</p>
+      </div>
+    </div>
+
+    <hr/>
+
+    <!-- Contact -->
+    <div class="section" id="contact">
+      <div class="section-header">
+        <div class="section-icon" style="background:#dce3ff">💬</div>
+        <h2>Contact &amp; Support</h2>
+      </div>
+      <div class="two-col">
+        <div class="card">
+          <h3>📧 Email Support</h3>
+          <p>Have a question or found a bug?<br/><a href="mailto:gkpointnepal@gmail.com">gkpointnepal@gmail.com</a></p>
+        </div>
+        <div class="card">
+          <h3>🌐 Developer Website</h3>
+          <p>More apps and updates from Dev Pandey:<br/><a href="http://www.edevpandey.com.np" target="_blank">edevpandey.com.np</a></p>
+        </div>
+      </div>
+      <div class="tip green">
+        <div class="tip-icon">🙏</div>
+        <p><strong>Happy Accounting!</strong>Your feedback makes Account Pro better every day. If you enjoy the app, please leave a review on Google Play — it helps others discover it.</p>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ── Footer ────────────────────────────────────────────── -->
+<footer>
+  <p>Account Pro — An Accounting App by <a href="http://www.edevpandey.com.np" target="_blank">Dev Pandey</a> &nbsp;·&nbsp; <a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="https://play.google.com/store/apps/details?id=com.edev.accountsir" target="_blank">Google Play</a></p>
+</footer>
+
+</body>
+</html>
