@@ -27,19 +27,19 @@ Track your net worth, manage accounts, and keep your books balanced — fully of
 <table>
   <tr>
     <td align="center">
-      <img src="assets/screenshots/mobile-01-dashboard.png" width="200" alt="Dashboard"/>
+      <img src="assets/screenshots/mobile-01.webp" width="200" alt="Dashboard"/>
+      <br/><sub>Quick Entry</sub>
+    </td>
+    <td align="center">
+      <img src="assets/screenshots/mobile-02.webp" width="200" alt="Ledger View"/>
       <br/><sub>Dashboard</sub>
     </td>
     <td align="center">
-      <img src="assets/screenshots/mobile-02-ledger.png" width="200" alt="Ledger View"/>
-      <br/><sub>Ledger View</sub>
-    </td>
-    <td align="center">
-      <img src="assets/screenshots/mobile-03-transaction.png" width="200" alt="Add Transaction"/>
+      <img src="assets/screenshots/mobile-03.webp" width="200" alt="Add Transaction"/>
       <br/><sub>Add Transaction</sub>
     </td>
     <td align="center">
-      <img src="assets/screenshots/mobile-04-reports.png" width="200" alt="Reports"/>
+      <img src="assets/screenshots/mobile-04.webp" width="200" alt="Reports"/>
       <br/><sub>Reports</sub>
     </td>
   </tr>
@@ -54,22 +54,22 @@ Track your net worth, manage accounts, and keep your books balanced — fully of
 <table>
   <tr>
     <td align="center">
-      <img src="assets/screenshots/desktop-01-dashboard.png" width="380" alt="Desktop Dashboard"/>
-      <br/><sub>Dashboard</sub>
+      <img src="assets/screenshots/desktop-01.png" width="380" alt="Desktop Dashboard"/>
+      <br/><sub>Data Syncing</sub>
     </td>
     <td align="center">
-      <img src="assets/screenshots/desktop-02-ledger.png" width="380" alt="Desktop Ledger"/>
-      <br/><sub>Ledger View</sub>
+      <img src="assets/screenshots/desktop-02.png" width="380" alt="Desktop Ledger"/>
+      <br/><sub>Dashboard</sub>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <img src="assets/screenshots/desktop-03-journal.png" width="380" alt="Desktop Journal Entry"/>
-      <br/><sub>Journal Entry</sub>
+      <img src="assets/screenshots/desktop-03.png" width="380" alt="Desktop Journal Entry"/>
+      <br/><sub>Voucher Entry</sub>
     </td>
     <td align="center">
-      <img src="assets/screenshots/desktop-04-reports.png" width="380" alt="Desktop Reports"/>
-      <br/><sub>Reports & Export</sub>
+      <img src="assets/screenshots/desktop-04.png" width="380" alt="Desktop Reports"/>
+      <br/><sub>Company Creation</sub>
     </td>
   </tr>
 </table>
