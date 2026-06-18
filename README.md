@@ -79,7 +79,7 @@ Track your net worth, manage accounts, and keep your books balanced — fully of
 
 ## 📌 What is Account Pro?
 
-While searching for a mobile accounting app, I found many options — but very few adhered to the principles of the **double-entry accounting system**. Accounting is everywhere, and people increasingly want to keep track of their wealth and financial well-being. That realization inspired this app.
+_While searching for a mobile accounting app, I found many options — but very few adhered to the principles of the **double-entry accounting system**. Accounting is everywhere, and people increasingly want to keep track of their wealth and financial well-being. That realization inspired this app.
 
 Account Pro is built with the **double-entry system at its core**, allowing users to create as many accounts as needed — ensuring accurate financial tracking and better insights into their finances.
 
